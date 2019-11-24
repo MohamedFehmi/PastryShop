@@ -12,6 +12,7 @@ using Microsoft.Extensions.Hosting;
 using PastryShop.Models;
 using PastryShop.Models.Interfaces;
 using PastryShop.Models.Mocks;
+using PastryShop.Models.Repositories;
 
 namespace PastryShop
 {
@@ -29,8 +30,8 @@ namespace PastryShop
         // For more information on how to configure your application, visit https://go.microsoft.com/fwlink/?LinkID=398940
         public void ConfigureServices(IServiceCollection services)
         {
-            services.AddScoped<IPieRepository, MockPieRepository>();
-            services.AddScoped<ICategoryRepository, MockCategoryRepository>();
+            services.AddScoped<IPieRepository, PieRepository>();
+            services.AddScoped<ICategoryRepository, CategoryRepository>();
 
             services.AddDbContext<AppDbContext>(options => options.UseSqlServer(Configuration.GetConnectionString("DefaultConnection")));
 

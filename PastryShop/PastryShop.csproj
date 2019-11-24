@@ -17,6 +17,7 @@
     <Folder Include="Views\Shared\" />
     <Folder Include="Views\ShoppingCart\" />
     <Folder Include="ViewModels\" />
+    <Folder Include="Models\Repositories\" />
   </ItemGroup>
   <ItemGroup>
     <Content Remove="Views\Shared\_Layout.razor" />
