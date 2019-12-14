@@ -30,13 +30,14 @@ namespace PastryShop
         // For more information on how to configure your application, visit https://go.microsoft.com/fwlink/?LinkID=398940
         public void ConfigureServices(IServiceCollection services)
         {
-            services.AddScoped<IPieRepository, PieRepository>();
-            services.AddScoped<ICategoryRepository, CategoryRepository>();
+            services.AddHttpContextAccessor();
+            services.AddSession();
 
             services.AddDbContext<AppDbContext>(options => options.UseSqlServer(Configuration.GetConnectionString("DefaultConnection")));
 
-            services.AddHttpContextAccessor();
-            services.AddSession();
+            services.AddScoped<IPieRepository, PieRepository>();
+            services.AddScoped<ICategoryRepository, CategoryRepository>();
+            services.AddScoped(sp => ShoppingCard.GetCard(sp));
 
             services.AddControllersWithViews();
         }
@@ -52,6 +53,7 @@ namespace PastryShop
             app.UseHttpsRedirection();
             app.UseStaticFiles();
 
+            //Should be called before UseRouting
             app.UseSession();
 
             app.UseRouting();

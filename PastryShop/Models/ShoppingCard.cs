@@ -20,7 +20,7 @@ namespace PastryShop.Models
             _appDbContext = appDbContext;
         }
 
-        public static ShoppingCard GetCart(IServiceProvider services)
+        public static ShoppingCard GetCard(IServiceProvider services)
         {
             ISession session = services.GetRequiredService<IHttpContextAccessor>()?
                 .HttpContext.Session;
