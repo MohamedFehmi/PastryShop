@@ -22,16 +22,16 @@ namespace PastryShop.Controllers
             _categoryRepository = categoryRepository;
         }
 
-        public ViewResult ListPies()
-        {
-            PiesListViewModel piesListViewModel = new PiesListViewModel();
-            piesListViewModel.Pies = _pieRepository.AllPies;
-            piesListViewModel.CurrentCategory = "Cheese Cakes";
+        //public ViewResult ListPies()
+        //{
+        //    PiesListViewModel piesListViewModel = new PiesListViewModel();
+        //    piesListViewModel.Pies = _pieRepository.AllPies;
+        //    piesListViewModel.CurrentCategory = "Cheese Cakes";
 
-            return View(piesListViewModel);
-        }
+        //    return View(piesListViewModel);
+        //}
 
-        public ViewResult List(string category)
+        public ViewResult ListPies(string category)
         {
             IEnumerable<Pie> pies;
             string currentCategory;
