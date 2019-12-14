@@ -22,6 +22,7 @@
     <Folder Include="Views\Shared\Components\ShoppingCardSummary\" />
     <Folder Include="Components\" />
     <Folder Include="Views\Shared\Components\CategoryMenu\" />
+    <Folder Include="TagHelpers\" />
   </ItemGroup>
   <ItemGroup>
     <Content Remove="Views\Shared\_Layout.razor" />
