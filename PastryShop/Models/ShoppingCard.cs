@@ -34,7 +34,7 @@ namespace PastryShop.Models
             return new ShoppingCard(context) { ShoppingCardId = CardId };
         }
 
-        public void AddToCart(Pie pie, int amount)
+        public void AddToCard(Pie pie, int amount)
         {
             var shoppingCardItem =
                     _appDbContext.ShoppingCardItems.SingleOrDefault(
@@ -58,7 +58,7 @@ namespace PastryShop.Models
             _appDbContext.SaveChanges();
         }
 
-        public int RemoveFromCart(Pie pie)
+        public int RemoveFromCard(Pie pie)
         {
             var shoppingCardItem =
                     _appDbContext.ShoppingCardItems.SingleOrDefault(
@@ -93,18 +93,18 @@ namespace PastryShop.Models
                            .ToList());
         }
 
-        public void ClearCart()
+        public void ClearCard()
         {
             var CardItems = _appDbContext
                 .ShoppingCardItems
-                .Where(cart => cart.ShoppingCardId == ShoppingCardId);
+                .Where(card => card.ShoppingCardId == ShoppingCardId);
 
             _appDbContext.ShoppingCardItems.RemoveRange(CardItems);
 
             _appDbContext.SaveChanges();
         }
 
-        public decimal GetShoppingCartTotal()
+        public decimal GetShoppingCardTotal()
         {
             var total = _appDbContext.ShoppingCardItems.Where(c => c.ShoppingCardId == ShoppingCardId)
                 .Select(c => c.Pie.Price * c.Amount).Sum();
