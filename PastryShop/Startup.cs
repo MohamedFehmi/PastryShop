@@ -37,6 +37,7 @@ namespace PastryShop
 
             services.AddScoped<IPieRepository, PieRepository>();
             services.AddScoped<ICategoryRepository, CategoryRepository>();
+            services.AddScoped<IOrderRepository, OrderRepository>();
             services.AddScoped(sp => ShoppingCard.GetCard(sp));
 
             services.AddControllersWithViews();
