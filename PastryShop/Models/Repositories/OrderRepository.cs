@@ -18,7 +18,6 @@ namespace PastryShop.Models.Repositories
         public void CreateOrder(Order order)
         {
             order.OrderPlaced = DateTime.UtcNow;
-
             var shoppingCardItems = _shoppingCard.ShoppingCardItems;
             order.OrderTotal = _shoppingCard.GetShoppingCardTotal();
 
