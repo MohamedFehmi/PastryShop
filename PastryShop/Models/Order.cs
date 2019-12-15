@@ -38,6 +38,7 @@ namespace PastryShop.Models
         [Required(ErrorMessage = "Please enter your city")]
         [StringLength(50)]
         public string City { get; set; }
+
         [StringLength(10)]
         public string State { get; set; }
 

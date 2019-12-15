@@ -25,5 +25,31 @@ namespace PastryShop.Controllers
         {
             return View();
         }
+
+        [HttpPost]
+        public IActionResult Checkout(Order order)
+        {
+            var items = _shoppingCard.GetShoppingCardItems();
+            _shoppingCard.ShoppingCardItems = items;
+
+            if (_shoppingCard.ShoppingCardItems.Count == 0)
+            {
+                ModelState.AddModelError("", "Your card is empty, add some pies first");
+            }
+
+            if (ModelState.IsValid)
+            {
+                _orderRepository.CreateOrder(order);
+                _shoppingCard.ClearCard();
+                return RedirectToAction("CheckoutComplete");
+            }
+            return View(order);
+        }
+
+        public IActionResult CheckoutComplete()
+        {
+            ViewBag.CheckoutCompleteMessage = "Thanks for your order. You'll soon enjoy our delicious pies!";
+            return View();
+        }
     }
 }
