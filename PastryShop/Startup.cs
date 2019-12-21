@@ -45,7 +45,7 @@ namespace PastryShop
             services.AddHttpContextAccessor();
             services.AddSession();
             services.AddControllersWithViews();
-            services.AddRazorPages();
+            services.AddRazorPages();//required by the scaffolded files
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -70,6 +70,7 @@ namespace PastryShop
                 endpoints.MapControllerRoute(
                     name: "default",
                     pattern: "{controller=Home}/{action=Index}/{id?}");
+                endpoints.MapRazorPages();
             });
         }
     }
